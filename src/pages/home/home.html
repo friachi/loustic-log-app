@@ -1,17 +1,36 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<div class="ls-fixed-page">
+<div ion-fixed class="ls-header">
+  <button class="ls-header__settings" (click)="onSettings()" >
+    <ion-icon name="settings"></ion-icon>
+  </button>
+</div>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<div class="ls-body">
 
-	<button ion-button color="danger" (click)="onLogin()">LOG IN</button>
+<div ion-fixed class="logo-container">n
+  <img src="../../assets/imgs/loustic-logo.png">
+  <h1 class="ls-title">Session Log</h1>
+</div>
 
-</ion-content>
+<div class="sign-in-form">
+  <form #f="ngForm" (ngSubmit)="onLogin(f)">
+  <input class="sign-in-input" ngModel type="email" name="email" placeholder="email">
+  <input class="sign-in-input" ngModel type="password" name="password" placeholder="password">
+  <select name="role" class="sign-in-input">
+  <option value="cameraman">Cameraman</option>
+  <option value="photographer">Photographer</option>
+  <option value="soundengineer">Sound Engineer</option>
+  <option value="producer">Producer</option>
+  <option value="director">Director</option>
+  <option value="setdesigner">Set Designer</option>
+  <option value="musicbuff">Music Buff</option>
+</select>
+  <button type="submit" class="sign-in-button"
+  >LOG IN</button>
+  </form>
+    <button class="forgot-password" (click)="onForgotPassword()" >
+    forgot password?
+  </button>
+</div>
+</div>
+</div>

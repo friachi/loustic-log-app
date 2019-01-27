@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LousticSessionPage } from '../loustic-session/loustic-session';
 
 /**
  * Generated class for the SessionsPage page.
@@ -22,12 +23,19 @@ export class SessionsPage {
     console.log('ionViewDidLoad SessionsPage');
   }
 
-
-	onNewSession(){
-		console.log('new session clicked');
-	}
-
   onSettings(){
     console.log('onSettings clicked');
   }
+
+  onAddSession(){
+    this.navCtrl.push(LousticSessionPage);
+  }
+
+  onBack(){
+     //logout
+
+     //pop
+     this.navCtrl.pop();
+  }
+
 }

@@ -1,3 +1,145 @@
 page-home {
 
 }
+
+.ls-fixed-page {
+	width: 100%;
+	height: 100vh;
+	background: white;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.ls-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background: white;
+	height: 60px;
+	z-index: 1000;
+}
+
+.ls-header__back,
+.ls-header__addSession {
+	position: relative;
+	margin-top: 15px;
+	margin-left: 3px;
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	background: white;
+	padding: 0;
+}
+
+.ls-header__settings {
+	position: fixed;
+	top: 5px;
+	right: 15px;
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+	background: white;
+	padding: 0;
+}
+
+.ls-header__title {
+	position: relative;
+	display: inline-block;
+	margin: 0;
+	margin-left: 5px;
+	height: 30px;
+	background: white;
+	text-align: center;
+	vertical-align: center;
+	padding: 0;
+	font-size: 16px;
+}
+
+.ls-body {
+	position: fixed;
+	top: 20px;
+	left: 0;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background: white;
+}
+
+.logo-container {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	display: inline-block;
+	background: white;
+	z-index: 1;
+}
+
+.ls-title {
+	top: -60px;
+	display: block;
+	position: relative;
+	text-align: center;
+	vertical-align: center;
+	padding: 5px;
+}
+
+.sign-in-form {
+	display: inline-block;
+	position: relative;
+	background: white;
+	top: -60px;
+	width: 100%;
+	padding: 15px;
+	z-index: 2;
+}
+
+.sign-in-input {
+	display: inline-block;
+	width: 100%;
+	height: 24px;
+	border: 1px solid black;
+	box-shadow: 1px 1px 2px black;
+	margin-bottom: 16px;
+}
+
+.sign-in-button {
+	position: relative;
+	display: block;
+	margin-top: 12px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 36px;
+	width: 50%;
+	color: white;
+	background: color($colors,primary);
+	border: 1px solid black;
+	box-shadow: 2px 2px 2px black;
+	vertical-align: center;
+	text-align: center;
+	padding: 4px;
+}
+
+.forgot-password {
+	position: relative;
+	display: block;
+	margin-top: 12px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 12px;
+	height: 24px;
+	width: auto;
+	color: blue;
+	background: white;
+	vertical-align: center;
+	text-align: center;
+	padding: 4px;
+	padding-bottom: 0;
+	border-bottom: 1px solid blue;
+}

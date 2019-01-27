@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import firebase from 'firebase' ;
 
 import { HomePage } from '../pages/home/home';
 @Component({
@@ -17,6 +18,17 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+
+    var config = {
+    apiKey: "AIzaSyBXIIUJrmxiWp5Tzw7kIS3az5o3dgHVs-A",
+    authDomain: "loustic-log.firebaseapp.com",
+    databaseURL: "https://loustic-log.firebaseio.com",
+    projectId: "loustic-log",
+    storageBucket: "loustic-log.appspot.com",
+    messagingSenderId: "37045143310"
+  };
+  firebase.initializeApp(config);
   }
+  
 }
 

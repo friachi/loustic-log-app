@@ -11,6 +11,7 @@ import { LocationDetailsPage } from '../pages/location-details/location-details'
 import { LousticSessionPage } from '../pages/loustic-session/loustic-session';
 import { BandDetailsPage } from '../pages/band-details/band-details';
 import { ThanksDetailsPage } from '../pages/thanks-details/thanks-details';
+import { AuthService } from '../services/auth';
 
  
 @NgModule({
@@ -40,6 +41,7 @@ import { ThanksDetailsPage } from '../pages/thanks-details/thanks-details';
   providers: [
     StatusBar,
     SplashScreen,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
