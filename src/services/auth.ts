@@ -10,4 +10,7 @@ export class AuthService {
 		return firebase.auth().sendPasswordResetEmail(email,null);
 	}
 
+	logout() {
+		firebase.auth().signOut();
+	}
 }

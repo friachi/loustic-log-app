@@ -14,16 +14,16 @@
 
 <div class="sign-in-form">
   <form #f="ngForm" (ngSubmit)="onLogin(f)">
-  <input class="sign-in-input" ngModel type="email" name="email" placeholder="email">
-  <input class="sign-in-input" ngModel type="password" name="password" placeholder="password">
-  <select name="role" class="sign-in-input">
-  <option value="cameraman">Cameraman</option>
-  <option value="photographer">Photographer</option>
-  <option value="soundengineer">Sound Engineer</option>
-  <option value="producer">Producer</option>
-  <option value="director">Director</option>
-  <option value="setdesigner">Set Designer</option>
-  <option value="musicbuff">Music Buff</option>
+  <input class="ls-text-input" ngModel type="email" name="email" placeholder="email">
+  <input class="ls-text-input" ngModel type="password" name="password" placeholder="password">
+  <select name="role" [ngModel]="'Music Buff'" class="ls-text-input" >
+  <option value="Cameraman">Cameraman</option>
+  <option value="Photographer">Photographer</option>
+  <option value="Sound Engineer">Sound Engineer</option>
+  <option value="Producer">Producer</option>
+  <option value="Director">Director</option>
+  <option value="Set Designer">Set Designer</option>
+  <option value="Music Buff">Music Buff</option>
 </select>
   <button type="submit" class="sign-in-button"
   >LOG IN</button>

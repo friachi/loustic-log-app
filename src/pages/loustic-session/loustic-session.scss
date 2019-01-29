@@ -1,3 +1,49 @@
 page-loustic-session {
+	background: white;
+}
 
+.ls-session {
+	position: relative;
+	top: 60px;
+	display: block;
+	width: 100%;
+}
+
+.ls-session__block1 {
+	position: relative;
+	display: block;
+	width: 80%;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.ls-date-button{ 
+	display: inline-block;
+	position: relative;
+	width: 24px;
+	height: 24px;
+	background: white;
+}
+
+.ls-list__button  {
+	display: inline-block;
+	width: 100%;
+	position: relative;
+	right: 0;
+	color: black;
+	background: white;
+	font-size:  16px;
+	padding:6px;
+	text-align: right;
+	vertical-align: center;
+}
+
+.ls-header__subsection {
+	position: relative;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background: white;
+	height: 60px;
 }

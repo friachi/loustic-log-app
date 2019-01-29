@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LousticSessionPage } from '../loustic-session/loustic-session';
+import { AuthService } from '../../services/auth';
+import { AppManager } from '../../services/appmanager';
+import { LousticSession } from '../../models/lousticsession.model';
+import { LoadingController, AlertController } from 'ionic-angular';
 
-/**
- * Generated class for the SessionsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -16,7 +15,8 @@ import { LousticSessionPage } from '../loustic-session/loustic-session';
 })
 export class SessionsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams , private authService: AuthService,
+              private appManager: AppManager , private loadingCtrl: LoadingController ,private alertController: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -28,14 +28,40 @@ export class SessionsPage {
   }
 
   onAddSession(){
-    this.navCtrl.push(LousticSessionPage);
+
+    const loading = this.loadingCtrl.create({
+      content: 'Creating a new session...'
+    });
+    loading.present();
+
+    const sessionRef = firebase.firestore().collection('sessions').doc() ;
+
+    let newSession = new LousticSession();
+    newSession.sessionRef = sessionRef.id;
+
+    sessionRef.set(JSON.parse(JSON.stringify(newSession))).then (
+      value => {
+         loading.dismiss();
+         this.appManager.activeSession = newSession;
+         this.appManager.sessionsList.push(newSession);
+         this.navCtrl.push(LousticSessionPage);
+      }
+      ).catch(
+      reason => {
+        loading.dismiss();
+        const alert = this.alertController.create({
+        title: 'Failed to create session!',
+        message: reason.message,
+        buttons: ['Ok']
+      })
+      alert.present();
+      }
+      );
   }
 
   onBack(){
      //logout
-
-     //pop
-     this.navCtrl.pop();
+     this.authService.logout();
   }
 
 }

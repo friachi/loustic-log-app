@@ -26,26 +26,40 @@ page-home {
 }
 
 .ls-header__back,
-.ls-header__addSession {
+.ls-header__addSession
+ {
 	position: relative;
-	margin-top: 15px;
+	margin-top: 18px;
 	margin-left: 3px;
-	width: 30px;
-	height: 30px;
+	width: 24px;
+	height: 24px;
 	display: inline-block;
 	background: white;
 	padding: 0;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.ls-header__addSession {
+	background: url(../../assets/imgs/plus.png);
+}
+
+.ls-header__back {
+	background: url(../../assets/imgs/back.png);
 }
 
 .ls-header__settings {
 	position: fixed;
-	top: 5px;
-	right: 15px;
-	width: 50px;
-	height: 50px;
+	top: 18px;
+	right: 20px;
+	width: 24px;
+	height: 24px;
 	display: inline-block;
 	background: white;
 	padding: 0;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background: url(../../assets/imgs/settings.png);
 }
 
 .ls-header__title {
@@ -100,7 +114,7 @@ page-home {
 	z-index: 2;
 }
 
-.sign-in-input {
+.ls-text-input {
 	display: inline-block;
 	width: 100%;
 	height: 24px;

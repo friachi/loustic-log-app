@@ -1,18 +1,59 @@
-<!--
-  Generated template for the LousticSessionPage page.
+<div ion-fixed class="ls-header">
+    <button class="ls-header__back" (click)="onBack()" >
+    <ion-icon name="arrow-back"></ion-icon>
+  </button>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+  <h3 class="ls-header__title">Loustic Session</h3>
+  <button class="ls-header__settings" (click)="onSettings()" >
+    <ion-icon name="settings" size="large"></ion-icon>
+  </button>
+</div>
 
-  <ion-navbar>
-    <ion-title>LousticSession</ion-title>
-  </ion-navbar>
+<div class="ls-session">
+	<div class="ls-session__block1">
+		<input class="ls-text-input" type="text" name="band" placeholder="band/ artist name" 
+		[(ngModel)]="lousticSession.band" (focusout)="saveChange()">
+		<input class="ls-text-input" type="text" name="manager" placeholder="Manager/ agent"
+		[(ngModel)]="lousticSession.manager" (focusout)="saveChange()">
+		<input class="ls-text-input" type="text" name="plannedDate" placeholder="planned date" style="width: 70%"
+		[(ngModel)]="lousticSession.plannedDate" (focusout)="saveChange()">
+		<button class="ls-date-button" ><ion-icon name="calendar"></ion-icon></button>
+		<div>
+		<label style="margin-top: 20px">Requested by</label>
+		  <input type="radio" id="them" name="requestedBy" value="them" style="margin-left: 40px" [checked]="lousticSession.requestedBy == 'them' "
+		  (click)="lousticSession.requestedBy = 'them' ;" (focusout)="saveChange()">
+  		  <label for="them">Them</label>
+          <input type="radio" id="us" name="requestedBy" value="us" style="margin-left: 20px" [checked]="lousticSession.requestedBy == 'us' " 
+          (click)="lousticSession.requestedBy = 'us' ;" (focusout)="saveChange()">
+  		 <label for="us">Us</label>
+  		</div>
+	</div>
 
-</ion-header>
+	<div class="ls-session__block1">
+		<button class="ls-list__button">Location <ion-icon name="arrow-dropright"></ion-icon></button>
+		<button class="ls-list__button">Band members / setup <ion-icon name="arrow-dropright"></ion-icon></button>
+		<button class="ls-list__button">Special thanks <ion-icon name="arrow-dropright"></ion-icon></button>
+	</div>
 
+	<div class="ls-session__block1">
+		<p>start time / end time goes here</p>
+	</div>
 
-<ion-content padding>
+	<div class="ls-session__block1">
+		<div class="ls-header__subsection">
+   	     <button class="ls-header__addSession" (click)="onAddSong()" >
+         <ion-icon name="add-circle-outline" ></ion-icon>
+         </button>
+  		<h3 class="ls-header__title">New Song</h3>
+		</div>
 
-</ion-content>
+		<div class="ls-sessions" style="top:0">
+  		<div *ngIf="true" class="ls-text__container" >
+    	<p class="ls-text" >No songs are created</p>
+    	<p class="ls-text" >click + to create a new song</p>
+  		</div>
+		</div>
+
+	</div>
+
+</div>

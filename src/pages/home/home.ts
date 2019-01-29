@@ -4,6 +4,8 @@ import { SessionsPage } from '../sessions/sessions';
 import { LoadingController, AlertController } from 'ionic-angular';
 import { AuthService } from '../../services/auth' ;
 import { NgForm } from '@angular/forms';
+import { AppManager } from '../../services/appmanager';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'page-home',
@@ -12,7 +14,7 @@ import { NgForm } from '@angular/forms';
 export class HomePage {
 
   constructor(public navCtrl: NavController , private loadingCtrl: LoadingController , private authService: AuthService,
-  	private alertController: AlertController) {
+  	private alertController: AlertController, private appManager: AppManager) {
 
   }
 
@@ -26,6 +28,7 @@ export class HomePage {
 		.then( data => 
 		{
 			loading.dismiss();
+			this.appManager.activeUser = new User(form.value.email, form.value.role.value);
 			this.navCtrl.push(SessionsPage);
 		}
 		)
