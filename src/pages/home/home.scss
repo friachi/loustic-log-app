@@ -63,16 +63,16 @@ page-home {
 }
 
 .ls-header__title {
-	position: relative;
+	position: absolute;
 	display: inline-block;
 	margin: 0;
-	margin-left: 5px;
-	height: 30px;
+	top: 20px;
+	left: 65px;
+	height: 24px;
 	background: white;
-	text-align: center;
-	vertical-align: center;
+	text-align: top;
 	padding: 0;
-	font-size: 16px;
+	font-size: 18px;
 }
 
 .ls-body {
@@ -121,6 +121,7 @@ page-home {
 	border: 1px solid black;
 	box-shadow: 1px 1px 2px black;
 	margin-bottom: 16px;
+	position: relative;
 }
 
 .sign-in-button {
@@ -129,6 +130,7 @@ page-home {
 	margin-top: 12px;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 12px;
 	height: 36px;
 	width: 50%;
 	color: white;

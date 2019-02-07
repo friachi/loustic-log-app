@@ -11,8 +11,11 @@ import { LocationDetailsPage } from '../pages/location-details/location-details'
 import { LousticSessionPage } from '../pages/loustic-session/loustic-session';
 import { BandDetailsPage } from '../pages/band-details/band-details';
 import { ThanksDetailsPage } from '../pages/thanks-details/thanks-details';
+import { SongInfoPage } from '../pages/song-info/song-info';
 import { AuthService } from '../services/auth';
 import { AppManager } from '../services/appmanager';
+import { LongPressModule } from 'ionic-long-press';
+import { IonBottomDrawerModule } from 'ion-bottom-drawer';
 
  
 @NgModule({
@@ -23,10 +26,13 @@ import { AppManager } from '../services/appmanager';
     LocationDetailsPage,
     LousticSessionPage,
     BandDetailsPage,
-    ThanksDetailsPage
+    ThanksDetailsPage,
+    SongInfoPage
   ],
   imports: [
     BrowserModule,
+    LongPressModule,
+    IonBottomDrawerModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -37,7 +43,8 @@ import { AppManager } from '../services/appmanager';
     LocationDetailsPage,
     LousticSessionPage,
     BandDetailsPage,
-    ThanksDetailsPage
+    ThanksDetailsPage,
+    SongInfoPage
   ],
   providers: [
     StatusBar,

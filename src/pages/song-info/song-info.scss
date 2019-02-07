@@ -1,3 +1,83 @@
 page-song-info {
 
 }
+
+.ls-drop_roles {
+	position: absolute;
+	display: inline-block;
+	margin: 0;
+	top: 20px;
+	right: 15px;
+	width: 50%;
+	height: 25px;
+	background: white;
+	text-align: center;
+	padding: 0;
+	font-size: 11px;
+}
+
+.ls-role__title {
+	position: absolute;
+	display: inline-block;
+	margin: 0;
+	top: 20px;
+	left: 15px;
+	height: 24px;
+	background: white;
+	text-align: top;
+	padding: 0;
+	font-size: 18px;
+}
+
+.ls-toggle__button {
+	display: block;
+	height: 24px;
+	width: 24px;
+	margin-left: auto;
+	margin-right: auto;
+	background: url(../../assets/imgs/up.png);
+}
+
+.ls-chat__input {
+	position: absolute;
+	display: inline-block;
+	top: 16px;
+	left: 15px;
+	height: 28px;
+	width: 80%;
+	background: white;
+	text-align: center;
+	padding: 0;
+	font-size: 12px;
+	border-radius: 20px;
+	border: 1px solid black;
+}
+
+.ls-chat__send {
+	position: absolute;
+	display: inline-block;
+	top: 14px;
+	right: 15px;
+	height: 32px;
+	width: 32px;
+	background: url(../../assets/imgs/send.png);
+}
+
+.chat-item__right {
+	position: relative;
+	display: inline-block;
+	padding: 4px;
+	width: 80%;
+	right: 5px;
+	float: right;
+	margin: 5px 0;
+}
+
+.chat-item__left {
+	position: relative;
+	display: inline-block;
+	padding: 4px;
+	width: 80%;
+	left: 5px;
+	margin: 5px 0;
+}

@@ -4,7 +4,6 @@ page-loustic-session {
 
 .ls-session {
 	position: relative;
-	top: 60px;
 	display: block;
 	width: 100%;
 }
@@ -20,10 +19,16 @@ page-loustic-session {
 
 .ls-date-button{ 
 	display: inline-block;
-	position: relative;
+	position: absolute;
+	right: 32px;
+	bottom: 32px;
 	width: 24px;
 	height: 24px;
+	//margin-left:35px;
 	background: white;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background: url(../../assets/imgs/calendar.png);
 }
 
 .ls-list__button  {
@@ -39,6 +44,10 @@ page-loustic-session {
 	vertical-align: center;
 }
 
+.ls-list__button:hover {
+	background: lightgrey;
+}
+
 .ls-header__subsection {
 	position: relative;
 	width: 100%;
@@ -46,4 +55,25 @@ page-loustic-session {
 	padding: 0;
 	background: white;
 	height: 60px;
+}
+
+.list-item__song {
+	display: block;
+	position: relative;
+	background: white;
+	height: 36px;
+	width: 96%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.list-item__song__title {
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 90%;
+	text-align: left;
+	vertical-align: center;
+	font-size: 22px;
+	color: black;
 }

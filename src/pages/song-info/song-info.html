@@ -1,18 +1,84 @@
-<!--
-  Generated template for the SongInfoPage page.
+<ion-header style="width: 60px">
+<div ion-fixed class="ls-header">
+    <button class="ls-header__back" (click)="onBack()" >
+  </button>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>SongInfo</ion-title>
-  </ion-navbar>
-
+  <h3 class="ls-header__title">{{ lousticSession.band }}</h3>
+  <button class="ls-header__settings" (click)="onSettings()" >
+  </button>
+</div>
 </ion-header>
+<ion-content>
+	<div ion-fixed class="ls-session" style="top: 60px ; z-index: 1;">
+	<div class="ls-session__block1">
+		<div>
+		<input class="ls-text-input" type="text" name="title" placeholder="Song title" 
+		[(ngModel)]="song.title" (focusout)="saveChange('title',song.title)">
+		<input class="ls-text-input" type="text" name="lyricsBy" placeholder="Lyrics by"
+		[(ngModel)]="song.lyricsBy" (focusout)="saveChange('lyricsBy',song.lyricsBy)">
+		<input class="ls-text-input" type="text" name="composedBy" placeholder="Composed by"
+		[(ngModel)]="song.composedBy" (focusout)="saveChange('composedBy',song.composedBy)">
+		<input class="ls-text-input" type="text" name="label" placeholder="Label / Publisher"
+		[(ngModel)]="song.label" (focusout)="saveChange('label',song.label)">
+		<input class="ls-text-input" type="text" name="lousticReleaseDate" placeholder="Agreed release date" style="width: 70%"
+		[(ngModel)]="song.lousticReleaseDate" (click)="dt.open()">
+		<button class="ls-date-button" style="bottom:80px;"><ion-datetime #dt pickerFormat="YYYYMMDD" [(ngModel)]="song.lousticReleaseDate" (ionChange)="saveChange('lousticReleaseDate',song.lousticReleaseDate)"></ion-datetime></button>
+		</div>
+		
+		<div style="margin-top: 20px;">
+		  <input type="radio" id="original" name="original" value="original" style="margin-left: 5px" [checked]="song.isOriginal === 'original' "
+		  (click)="song.isOriginal = 'original' ;" (focusout)="saveChange('isOriginal','original')">
+  		  <label for="original">Original</label>
+		  <input type="radio" id="cover" name="original" value="cover" style="margin-left: 40px" [checked]="song.isOriginal === 'cover' "
+		  (click)="song.isOriginal = 'cover ';" (focusout)="saveChange('isOriginal','cover')">
+  		  <label for="cover">Cover</label>
+  		</div>
 
-
-<ion-content padding>
+  		<div style="margin-top: 10px;">
+  		<input type="radio" id="unsigned" name="signed" value="unsigned" style="margin-left: 5px" [checked]="song.signedContract === 'unsigned' "
+		  (click)="song.signedContract = 'unsigned' ;" (focusout)="saveChange('signedContract','unsigned')">
+  		  <label for="unsigned">No contract</label>
+		  <input type="radio" id="signed" name="signed" value="signed" style="margin-left: 40px" [checked]="song.signedContract === 'signed' "
+		  (click)="song.signedContract = 'signed' ;" (focusout)="saveChange('signedContract','signed')">
+  		  <label for="signed">Signed contract</label>
+  		</div>
+	</div>
+	</div>
+<ion-bottom-drawer [(state)]="drawerState" [minimumHeight]="200" [dockedHeight]="200"
+  [distanceTop]="60" disableDrag="true" style="background: white; z-index: 10;">
+		<div class="ls-header__subsection">
+		<button class="ls-toggle__button" (click)="toggleDrawer()" [ngStyle]="{
+			'background': drawerState == 1 ? 'url(../../assets/imgs/up.png)' : 'url(../../assets/imgs/down.png)'
+		}"></button>
+		<h3 class="ls-role__title">Log as</h3>
+		  <select name="role" [(ngModel)]="user.role" class="ls-drop_roles" >
+  <option value="Cameraman">Cameraman</option>
+  <option value="Photographer">Photographer</option>
+  <option value="Sound Engineer">Sound Engineer</option>
+  <option value="Producer">Producer</option>
+  <option value="Director">Director</option>
+  <option value="Set Designer">Set Designer</option>
+  <option value="Music Buff">Music Buff</option>
+</select>
+		</div>
+		<div style="position: relative; width: 98% ; margin-right: auto;margin-left: auto;">
+          <span [ngClass]="
+          	msg.user.email == user.email ? 'chat-item__right' : 'chat-item__left'
+          " *ngFor="let msg of msgs; index as i" 
+          [ngStyle]="{
+          	'background' : i%2 ? 'lightgrey' : 'white'
+          }
+          ">
+            <label class="chat-item__role">{{ msg.user.role }}</label>
+            <label class="chat-item__mail">{{ msg.user.email }}</label>
+            <label class="chat-item__msg">{{ msg.msg }}</label>
+            <label class="chat-item__date">{{ msg.sendDate }}</label>
+          </span>
+		</div>
+</ion-bottom-drawer>
 
 </ion-content>
+<ion-footer style="height: 60px;">
+	<input #msgText type="text" name="msg" class="ls-chat__input" placeholder="add your comment">
+	<button class="ls-chat__send" (click)="sendMsg(msgText)"></button>
+</ion-footer>

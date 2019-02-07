@@ -1,14 +1,15 @@
 export class BandMember {
 	
-	constructor( public name: string,
-		public role: string,
-		public mic: string,
-		public micClip: string,
-		public phantom: string,
-		public dI: string,
-		public cable: string,
-		public stand: string,
-		public recorder: string
-		){}
+	public name: string= ''
+	public role: string= ''
+	public mic: string= 'no'
+	public micClip: string= 'no'
+	public phantom: string= 'no'
+	public dI: string = 'no'
+	public cable: string = ''
+	public stand: string= 'no'
+	public recorder: string = ''
+
+	constructor(){}
 
 }

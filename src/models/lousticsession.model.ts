@@ -12,9 +12,10 @@ export class LousticSession {
 	public startTime : string = ''
 	public endTime : string = ''
 	public bandMembers: BandMember[] = []
-	public songs: Song[] = []
+    public songs: Song[] = []
+    public songsCount: number = 0;
 	public thanks: Thanks[] = []
-	public location: Location = new Location('','','','');
+	public location: Location = new Location();
 	public requestedBy: string = 'them';
 	
 	constructor(){}

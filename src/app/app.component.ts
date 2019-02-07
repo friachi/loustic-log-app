@@ -20,6 +20,14 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      platform.backButton.subscribe(async () => {
+        if(this.nav.getActive().component.name != 'HomePage'){
+          this.nav.getActive().component.onBack();
+        }
+        else{
+          platform.exitApp();
+        }
+      });
     });
 
     var config = {

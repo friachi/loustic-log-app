@@ -28,7 +28,11 @@ export class HomePage {
 		.then( data => 
 		{
 			loading.dismiss();
-			this.appManager.activeUser = new User(form.value.email, form.value.role.value);
+			const mail = form.value.email;
+			console.log('mail ', mail);
+			const role = form.value.role;
+			console.log('role ', role);
+			this.appManager.activeUser = new User(mail, role);
 			this.navCtrl.push(SessionsPage);
 		}
 		)

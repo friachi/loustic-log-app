@@ -1,59 +1,76 @@
+<ion-header style="height: 60px;">
 <div ion-fixed class="ls-header">
     <button class="ls-header__back" (click)="onBack()" >
-    <ion-icon name="arrow-back"></ion-icon>
   </button>
 
   <h3 class="ls-header__title">Loustic Session</h3>
   <button class="ls-header__settings" (click)="onSettings()" >
-    <ion-icon name="settings" size="large"></ion-icon>
   </button>
 </div>
-
+</ion-header>
+<ion-content>
 <div class="ls-session">
 	<div class="ls-session__block1">
-		<input class="ls-text-input" type="text" name="band" placeholder="band/ artist name" 
-		[(ngModel)]="lousticSession.band" (focusout)="saveChange()">
+		<div>
+		<input class="ls-text-input" type="text" name="band" placeholder="Band/ artist name" 
+		[(ngModel)]="lousticSession.band" (focusout)="saveChange('band',lousticSession.band)">
 		<input class="ls-text-input" type="text" name="manager" placeholder="Manager/ agent"
-		[(ngModel)]="lousticSession.manager" (focusout)="saveChange()">
-		<input class="ls-text-input" type="text" name="plannedDate" placeholder="planned date" style="width: 70%"
-		[(ngModel)]="lousticSession.plannedDate" (focusout)="saveChange()">
-		<button class="ls-date-button" ><ion-icon name="calendar"></ion-icon></button>
+		[(ngModel)]="lousticSession.manager" (focusout)="saveChange('manager',lousticSession.manager)">
+		<input class="ls-text-input" type="text" name="plannedDate" placeholder="Planned date" style="width: 70%"
+		[(ngModel)]="lousticSession.plannedDate" (click)="dt.open()">
+		<button class="ls-date-button" ><ion-datetime #dt pickerFormat="YYYYMMDD" [(ngModel)]="lousticSession.plannedDate" (ionChange)="saveChange('plannedDate',lousticSession.plannedDate)" ></ion-datetime></button>
+		</div>
+		
 		<div>
 		<label style="margin-top: 20px">Requested by</label>
 		  <input type="radio" id="them" name="requestedBy" value="them" style="margin-left: 40px" [checked]="lousticSession.requestedBy == 'them' "
-		  (click)="lousticSession.requestedBy = 'them' ;" (focusout)="saveChange()">
+		  (click)="lousticSession.requestedBy = 'them' ;" (focusout)="saveChange('requestedBy',lousticSession.requestedBy)">
   		  <label for="them">Them</label>
           <input type="radio" id="us" name="requestedBy" value="us" style="margin-left: 20px" [checked]="lousticSession.requestedBy == 'us' " 
-          (click)="lousticSession.requestedBy = 'us' ;" (focusout)="saveChange()">
+          (click)="lousticSession.requestedBy = 'us' ;" (focusout)="saveChange('requestedBy',lousticSession.requestedBy)">
   		 <label for="us">Us</label>
   		</div>
 	</div>
 
 	<div class="ls-session__block1">
-		<button class="ls-list__button">Location <ion-icon name="arrow-dropright"></ion-icon></button>
-		<button class="ls-list__button">Band members / setup <ion-icon name="arrow-dropright"></ion-icon></button>
-		<button class="ls-list__button">Special thanks <ion-icon name="arrow-dropright"></ion-icon></button>
+		<button class="ls-list__button" (click)="goToLocationDetails()" >Location <ion-icon name="arrow-dropright"></ion-icon></button>
+		<button class="ls-list__button" (click)="goToBandMembers()">Band members / setup <ion-icon name="arrow-dropright">
+		</ion-icon></button>
+		<button class="ls-list__button" (click)="goToThanks()">Special thanks <ion-icon name="arrow-dropright"></ion-icon></button>
 	</div>
 
-	<div class="ls-session__block1">
+	<!-- div class="ls-session__block1">
 		<p>start time / end time goes here</p>
-	</div>
+	</div -->
 
 	<div class="ls-session__block1">
 		<div class="ls-header__subsection">
    	     <button class="ls-header__addSession" (click)="onAddSong()" >
-         <ion-icon name="add-circle-outline" ></ion-icon>
          </button>
   		<h3 class="ls-header__title">New Song</h3>
 		</div>
+	</div>
+</div>
 
-		<div class="ls-sessions" style="top:0">
-  		<div *ngIf="true" class="ls-text__container" >
+  		<ion-refresher slot="fixed" (ionRefresh)="fetchSongs($event)" >
+    		<ion-refresher-content 
+      		pullingIcon="arrow-dropdown"
+      		pullingText="Pull to refresh"
+      		refreshingSpinner="circles" 
+      		refreshingText="Loading songs...">
+    		</ion-refresher-content>
+  		</ion-refresher>
+
+		<div class="ls-sessions">
+  		<div *ngIf="!lousticSession.songs.length" class="ls-text__container" >
     	<p class="ls-text" >No songs are created</p>
     	<p class="ls-text" >click + to create a new song</p>
   		</div>
+  		    <div class="ls-text__container" *ngIf="lousticSession.songs.length">
+          <span class="list-item__song" (click)="selectedSong(i)" *ngFor="let song of lousticSession.songs; index as i" 
+          ion-long-press (onPressing)="promptDelete(song , i)"  [interval]="600" >
+            <label class="list-item__song__title">{{ song.title ? song.title : '(unnamed)' }}</label>
+          </span>
+    	</div>
 		</div>
-
-	</div>
-
-</div>
+	</ion-content>

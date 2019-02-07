@@ -13,6 +13,7 @@ export class AppManager {
 	public activeUser: User = null;
 	public sessionsList: LousticSession[] = [];
 	public activeSession: LousticSession = null;
+	public activeSong: Song = null;
 
 	constructor(){
 
