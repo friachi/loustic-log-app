@@ -1,4 +1,4 @@
-<ion-header style="width: 60px">
+<ion-header style="height: : 60px">
 <div ion-fixed class="ls-header">
     <button class="ls-header__back" (click)="onBack()" >
   </button>
@@ -8,8 +8,10 @@
   </button>
 </div>
 </ion-header>
-<ion-content>
-	<div ion-fixed class="ls-session" style="top: 60px ; z-index: 1;">
+<ion-content no-bounce>
+	<div ion-fixed class="ls-session" style="top: 60px ;" [ngStyle]="{
+			'z-index': drawerState == 1 ? '100' : '-1'
+		}">
 	<div class="ls-session__block1">
 		<div>
 		<input class="ls-text-input" type="text" name="title" placeholder="Song title" 
@@ -61,7 +63,9 @@
   <option value="Music Buff">Music Buff</option>
 </select>
 		</div>
-		<div style="position: relative; width: 98% ; margin-right: auto;margin-left: auto;">
+		<div #chat class="chat-container" [ngStyle]="{
+			'overflow': drawerState == 1 ? 'hidden' : 'scroll'
+		}">
           <span [ngClass]="
           	msg.user.email == user.email ? 'chat-item__right' : 'chat-item__left'
           " *ngFor="let msg of msgs; index as i" 
@@ -79,6 +83,10 @@
 
 </ion-content>
 <ion-footer style="height: 60px;">
-	<input #msgText type="text" name="msg" class="ls-chat__input" placeholder="add your comment">
-	<button class="ls-chat__send" (click)="sendMsg(msgText)"></button>
+	<div style="width: 100%; display: block;background: white; z-index: 10; height: 60px; margin: 0;padding: 0;position: relative;">
+	<form #f="ngForm" (ngSubmit)="sendMsg(msgText)">
+	<input #msgText type="text" ngModel name="msg" class="ls-chat__input" placeholder="add your comment">
+	<button class="ls-chat__send" type="submit"></button>
+	</form>
+	</div>
 </ion-footer>

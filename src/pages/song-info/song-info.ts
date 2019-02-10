@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , ViewChild , ElementRef} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AppManager } from '../../services/appmanager';
 import { LousticSession } from '../../models/lousticsession.model';
@@ -22,13 +22,13 @@ export class SongInfoPage {
   private user: User = new User('','');
   private msgs: LogMessage[] = [];
   drawerState = DrawerState.Docked;
+  @ViewChild('chat') chatBox: ElementRef;
 
   constructor(public navCtrl: NavController, public navParams: NavParams , private appManager: AppManager) {
   	this.song = this.appManager.activeSong;
   	this.user = this.appManager.activeUser;
   	this.lousticSession = this.appManager.activeSession;
     this.msgs = this.song.msgs;
-    console.log('role ',this.user.role);
   }
 
   onSettings(){
@@ -68,9 +68,28 @@ export class SongInfoPage {
 
   sendMsg( input: any) {
     let txt = input.value;
+    
+    if(txt){
+    
+    if(this.drawerState === DrawerState.Docked) {
+      this.drawerState = DrawerState.Top;
+    }
+
     const msg: LogMessage = new LogMessage(this.user,txt,'text','now');
     this.msgs.push(msg);
+            var doc = firebase.firestore().collection('sessions').doc(this.lousticSession.sessionRef).collection('songs').doc(this.song.songRef);
+        doc.update({
+          msgs : firebase.firestore.FieldValue.arrayUnion(JSON.parse(JSON.stringify(msg)))
+        }).then ( res => {})
+        .catch(
+      reason => { console.log('failed to update changes')});
     input.value = '';
+
+    let scrollContent = this.chatBox.nativeElement.parentNode;
+    scrollContent.scrollTop = scrollContent.scrollHeight ;
+
+    }
+    
   }
 
   toggleDrawer(){
