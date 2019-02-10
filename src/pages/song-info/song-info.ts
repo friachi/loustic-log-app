@@ -75,7 +75,7 @@ export class SongInfoPage {
       this.drawerState = DrawerState.Top;
     }
 
-    const msg: LogMessage = new LogMessage(this.user,txt,'text','now');
+    const msg: LogMessage = new LogMessage(this.user,txt,'text',this.timeStamp());
     this.msgs.push(msg);
             var doc = firebase.firestore().collection('sessions').doc(this.lousticSession.sessionRef).collection('songs').doc(this.song.songRef);
         doc.update({
@@ -99,5 +99,20 @@ export class SongInfoPage {
       this.drawerState = DrawerState.Docked;
     }
   }
+
+  timeStamp(): string {
+// Create a date object with the current time
+  let now = new Date();
+
+// Create an array with the current month, day and time
+  let date = [ now.getMonth() + 1, now.getDate(), now.getFullYear() ].map(d=>d.toString().length === 1 ? "0"+d : d);
+
+// Create an array with the current hour, minute and second
+  let time = [ now.getHours(), now.getMinutes() ].map(d=>d.toString().length === 1 ? "0"+d : d);
+
+
+// Return the formatted string
+  return date.join("-") + " " + time.join(":");
+}
 
 }

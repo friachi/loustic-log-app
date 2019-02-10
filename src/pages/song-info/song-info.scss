@@ -65,30 +65,77 @@ page-song-info {
 
 .chat-item__right {
 	position: relative;
-	display: inline-block;
+	display: block;
 	padding: 4px;
 	width: 80%;
 	right: 5px;
 	float: right;
 	margin: 5px 0;
+	min-height: 60px;
+	background: #dcf8c6;
 }
 
 .chat-item__left {
 	position: relative;
-	display: inline-block;
+	display: block;
 	padding: 4px;
 	width: 80%;
 	left: 5px;
 	margin: 5px 0;
+	min-height: 60px;
+	background: white;
 }
 
 .chat-container {
 	position: relative; 
 	width: 98%; 
-	margin-right: auto;
-	margin-left: auto;
+	margin: 5px auto;
+	min-height: 60px;
 }
 
 ion-bottom-drawer .scroll-content {
 	padding-bottom: 60px;
+	margin-bottom: 2px;
+}
+
+.chat-item__role {
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	text-align: right;
+	vertical-align: center;
+	font-size: 9px;
+}
+
+.chat-item__mail {
+	position: relative;
+	top: 2px;
+	left: 2px;
+	text-align: left;
+	vertical-align: center;
+	font-size: 9px;
+	display: block;
+}
+
+.chat-item__msg {
+	position: relative;
+	display: block;
+	margin-top: 6px;
+	margin-left: 8px;
+	text-align: left;
+	vertical-align: center;
+	font-size: 12px;
+	overflow: initial;
+    white-space: initial;
+    width: 90%;
+    padding-bottom: 10px;
+}
+
+.chat-item__date {
+	position: absolute;
+	bottom: 4px;
+	right: 4px;
+	text-align: right;
+	vertical-align: center;
+	font-size: 9px;
 }

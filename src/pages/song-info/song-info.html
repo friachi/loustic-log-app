@@ -68,11 +68,7 @@
 		}">
           <span [ngClass]="
           	msg.user.email == user.email ? 'chat-item__right' : 'chat-item__left'
-          " *ngFor="let msg of msgs; index as i" 
-          [ngStyle]="{
-          	'background' : i%2 ? 'lightgrey' : 'white'
-          }
-          ">
+          " *ngFor="let msg of msgs; index as i">
             <label class="chat-item__role">{{ msg.user.role }}</label>
             <label class="chat-item__mail">{{ msg.user.email }}</label>
             <label class="chat-item__msg">{{ msg.msg }}</label>
