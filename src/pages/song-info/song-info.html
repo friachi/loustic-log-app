@@ -66,14 +66,20 @@
 		<div #chat class="chat-container" [ngStyle]="{
 			'overflow': drawerState == 1 ? 'hidden' : 'scroll'
 		}">
+			<div *ngFor="let msg of msgs; index as i" style="width: 100%;
+			display: inline-block;
+			background: transparent;
+			position: relative;"
+			>
           <span [ngClass]="
           	msg.user.email == user.email ? 'chat-item__right' : 'chat-item__left'
-          " *ngFor="let msg of msgs; index as i">
+          ">
             <label class="chat-item__role">{{ msg.user.role }}</label>
             <label class="chat-item__mail">{{ msg.user.email }}</label>
             <label class="chat-item__msg">{{ msg.msg }}</label>
             <label class="chat-item__date">{{ msg.sendDate }}</label>
           </span>
+      		</div>
 		</div>
 </ion-bottom-drawer>
 

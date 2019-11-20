@@ -73,7 +73,6 @@ export class SessionsPage {
       snapshot => {
         this.loadedSessions = [];
         snapshot.forEach(doc => {
-        console.log(doc.data());
         let session:LousticSession = JSON.parse(JSON.stringify(doc.data()));
         this.loadedSessions.push(session);
         });
